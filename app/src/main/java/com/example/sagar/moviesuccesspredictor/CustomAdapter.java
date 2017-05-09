@@ -20,10 +20,12 @@ public class CustomAdapter extends BaseAdapter {
     private Context mContext;
     private final String[] web;//text
     private final String[] Imagelink;//image
-    public CustomAdapter(Context c,String[] web,String[] Imagelink ) {
+    private  final String[] release_date;
+    public CustomAdapter(Context c,String[] web,String[] Imagelink,String[] release_date ) {
         mContext = c;
         this.Imagelink = Imagelink;
         this.web = web;
+        this.release_date=release_date;
     }
     @Override
     public int getCount() {
@@ -51,17 +53,21 @@ public class CustomAdapter extends BaseAdapter {
             grid = new View(mContext);
             grid = inflater.inflate(R.layout.fragment_item_list, null);
             TextView textView = (TextView) grid.findViewById(R.id.textViewa);
+            TextView textView1=(TextView) grid.findViewById(R.id.textView4) ;
             ImageView imageView = (ImageView)grid.findViewById(R.id.imageView1);
-            textView.setText(web[position]);
 
-            //get image from web and set
-            //Context c = getActivity().getApplicationContext();
-            Picasso.with(mContext)
-                    .load(Imagelink[position]).fit().
-                    placeholder(R.drawable.aa).error(R.drawable.ab)
-                    .into(imageView);
-
-        } else {
+           // if(web[position]!=null&&Imagelink[position]!=null&&release_date[position]!=null) {
+                textView.setText(web[position]);
+                textView1.setText(release_date[position]);
+                //get image from web and set
+                //Context c = getActivity().getApplicationContext();
+             //   String sagar = Imagelink[position];
+                Picasso.with(mContext)
+                        .load(Imagelink[position]).fit().
+                        placeholder(R.drawable.aa).error(R.drawable.ab)
+                        .into(imageView);
+            }
+        else {
             grid = (View) convertView;
         }
 

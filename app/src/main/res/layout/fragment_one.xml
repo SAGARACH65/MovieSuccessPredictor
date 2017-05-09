@@ -37,6 +37,7 @@
                 android:background="#fff"
                 android:textStyle="bold"
                 android:textSize="15sp"
+
                 android:textColor="@color/colorPrimaryDark"
                 android:text="@string/actor1" />
 

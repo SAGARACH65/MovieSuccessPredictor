@@ -19,19 +19,14 @@ import com.squareup.picasso.Picasso;
 
 
 public class TwoFragment extends Fragment{
-    String[] web = {
-            "Bahubali 2",
-            "3 idiots",
-            "sagar"
+    private String[] movie_name=new String[3];
+    private String[] image_url=new String[3];
+    private String[] release_date=new String[3];
+    private String[] prediction=new String[3];
 
 
-    } ;
-    String[] imageId = {
-            "https://www.desiretrees.in/wp-content/uploads/2016/12/Baahubali-2-Posters.jpg",
-            "http://s3.india.com/wp-content/uploads/2016/01/3-idiots-sequel-1.jpg",
-            "http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg"
 
-    };
+
     public TwoFragment() {
         // Required empty public constructor
     }
@@ -54,8 +49,18 @@ public class TwoFragment extends Fragment{
 
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView1);
 
+        //receiving the data from database and populating it to the adapter
+            DataReceiver data= new DataReceiver(getContext());
+            movie_name=data.getMovie_name();
+        DataReceiver data1= new DataReceiver(getContext());
+            image_url=data1.getImagelink();
+        DataReceiver data2= new DataReceiver(getContext());
 
-        CustomAdapter adapter = new CustomAdapter(getActivity(), web, imageId);
+        release_date=data2.getRelease_date();
+        DataReceiver data3= new DataReceiver(getContext());
+
+        prediction=data3.getPrediction();
+        CustomAdapter adapter = new CustomAdapter(getActivity(), movie_name, image_url,release_date);
         grid=(GridView)view.findViewById(R.id.gridview);
         grid.setAdapter(adapter);
 
@@ -67,7 +72,14 @@ public class TwoFragment extends Fragment{
                                     int position, long id) {
 
         Intent intent = new Intent(getActivity(), ShowResult.class);
-                intent.putExtra("prediction", "Success");
+                Bundle extras = new Bundle();
+
+                extras.putString("name",movie_name[position]);
+                extras.putString("image_url",image_url[position]);
+                extras.putString("release_date",release_date[position]);
+                extras.putString("prediciton",prediction[position]);
+                intent.putExtras(extras);
+
                 startActivity(intent);
             }
         });
