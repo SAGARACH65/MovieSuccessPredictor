@@ -2,6 +2,7 @@ package com.example.sagar.moviesuccesspredictor;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -128,4 +129,5 @@ Toolbar toolbar,toolbar1;
         }
 
     }
-}
+    }
+

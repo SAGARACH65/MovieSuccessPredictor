@@ -22,13 +22,18 @@
 
 
     <string name="Director">Director:</string>
-
+<string name="predict">Predict</string>
     <string name="Producer">Producer:</string>
     <string name="budjet">Movie Budget($):</string>
     <string-array name="items">
         <item>none</item>
         <item>will be added later on</item>
     </string-array>
-
-
+<string name="Genera">Genera</string>
+<string name="cash">Cash</string>
+    <array name="genera">
+        <item>Comedy</item>
+        <item>Romantic</item>
+        <item>Action</item>
+    </array>
 </resources>
